@@ -38,7 +38,7 @@
 
 <!-- <include name="toolchain/gcc-toolchain.xml"/> -->
 
-<compiler id="android-gcc" exe="clang++">
+<compiler id="android-clang" exe="clang++">
 
   <exe name="clang++" />
   <flag value="--target=${EXEPREFIX}${PLATFORM_NUMBER}" />
@@ -46,7 +46,7 @@
   <!-- File Related -->
   <include name="toolchain/common-defines.xml" />
   <flag value="-I${HXCPP}/include"/>
-  <flag value="--sysroot=${ANDROID_NDK_ROOT}/platforms/${PLATFORM}/${PLATFORM_ARCH}"/>
+  <flag value="--sysroot=${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${ANDROID_HOST}/sysroot"/>
   <flag value="-I${ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/include"/>
   <flag value="-I${ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++abi/include"/>
   <flag value="-I${ANDROID_NDK_ROOT}/sources/cxx-stl/system/include"/>
