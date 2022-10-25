@@ -162,5 +162,40 @@
   <lib name="-llog"/>
   <lib name="-ldl"/>
 </linker>
+
+<linker id="exe" exe="clang++" >
+
+  <exe name="clang++" />
+  <flag value="--target=${EXEPREFIX}${PLATFORM_NUMBER}" />
+  <ext value=""/>
+  <outflag value="-o"/>
+  <prefix value=""/>
+  <flag value="-frtti"/>
+  <flag value="-nostdlib"/>
+  <flag value="-std=c++11" if="HXCPP_CPP11"/>
+  <flag value="-Wl,--no-undefined" unless="dll_import" />
+  <flag value="-Wl,--unresolved-symbols=ignore-in-object-files" if="dll_import" />
+  <flag value="-Wl,-z,noexecstack"/>
+  <flag value ="-static-libstdc++" />
+  <flag value ="-v" />
+
+  <flag value="--sysroot=${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${ANDROID_HOST}_64/sysroot/usr"/>
+
+  <set name="SYSROOTPATH" value="${ANDROID_NDK_ROOT}/toolchains/llvm/prebuilt/${ANDROID_HOST}_64/sysroot/usr" />
+  <set name="LIBDIRARCH" value="${EXEPREFIX}" unless="HXCPP_ARMV7" />
+  <set name="LIBDIRARCH" value="arm-linux-androideabi" if="HXCPP_ARMV7" />
+
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libc.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libc++_static.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libc++abi.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libcompiler_rt-extras.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libdl.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libm.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libstdc++.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libz.a"/>
+  <lib name="${SYSROOTPATH}/lib/${LIBDIRARCH}/libandroid_support.a" if="HXCPP_ARMV7 || HXCPP_X86"/>
+  <lib name="-llog"/>
+  <lib name="-ldl"/>
+</linker>
     
 </xml>
