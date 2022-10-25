@@ -44,7 +44,8 @@
   <!-- File Related -->
   <include name="toolchain/common-defines.xml" />
   <flag value="-I${HXCPP}/include"/>
-  <flag value="-Iinclude"/>
+  <flag value="-I${ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++/include"/>
+  <flag value="-I${ANDROID_NDK_ROOT}/sources/cxx-stl/llvm-libc++-abi/include"/>
   <objdir value="obj/android${OBJEXT}${ARCH}" />
   <ext value=".obj"/>
 
