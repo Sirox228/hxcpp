@@ -117,6 +117,7 @@
   <flag value="-fno-strict-aliasing"/>
   <flag value="-Wa,--noexecstack"/>
   <flag value="-O0" if="debug"/>
+  <flag value="-Wdeprecated-register"/>
   <flag value="-DNDEBUG"/>
   <flag value="-DHXCPP_LOAD_DEBUG" if="HXCPP_LOAD_DEBUG"/>
   <outflag value="-o"/>
