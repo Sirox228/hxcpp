@@ -1,5 +1,7 @@
 <xml>
 
+<set name="HXCPP_CPP11" value="1" if="NDKV9+ || NDKV10+" unless="HXCPP_NO_CPP11" />
+
 <!-- Set architecture -->
 <section if="HXCPP_X86">
   <set name="ARCH" value="-x86" />
@@ -108,6 +110,8 @@
   <cppflag value="-frtti"/>
   <flag value="-D_LINUX_STDDEF_H "/> <!-- Avoid compiler including 2 version of file -->
   <flag value="-Wno-psabi" />
+  <cppflag value="-std=c++11" if="HXCPP_CPP11"/>
+  <flag value="-DHXCPP_CPP11" if="HXCPP_CPP11"/>
   <flag value="-fomit-frame-pointer"/>
   <flag value="-fexceptions"/>
   <flag value="-fno-strict-aliasing"/>
@@ -133,6 +137,7 @@
   <prefix value=""/>
   <flag value="-frtti"/>
   <flag value="-nostdlib"/>
+  <flag value="-std=c++11" if="HXCPP_CPP11"/>
   <flag value="-Wl,--no-undefined" unless="dll_import" />
   <flag value="-Wl,--unresolved-symbols=ignore-in-object-files" if="dll_import" />
   <flag value="-Wl,-z,noexecstack"/>
@@ -167,6 +172,7 @@
   <prefix value=""/>
   <flag value="-frtti"/>
   <flag value="-nostdlib"/>
+  <flag value="-std=c++11" if="HXCPP_CPP11"/>
   <flag value="-Wl,--no-undefined" unless="dll_import" />
   <flag value="-Wl,--unresolved-symbols=ignore-in-object-files" if="dll_import" />
   <flag value="-Wl,-z,noexecstack"/>
