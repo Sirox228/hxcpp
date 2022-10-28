@@ -7249,7 +7249,7 @@ for (;; ptr++)
             if (cd->names_found >= cd->named_group_list_size)
               {
               int newsize = cd->named_group_list_size * 2;
-              named_group *newspace = (PUBL(malloc(newsize)))(newsize * sizeof(named_group));
+              named_group *newspace = (PUBL(malloc))(newsize * sizeof(named_group));
 
               if (newspace == NULL)
                 {
